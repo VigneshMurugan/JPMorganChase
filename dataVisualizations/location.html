@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" charset="utf-8"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+      #mapContainer {
+        width: 400px;
+        height: 200px;
+      }
+      input-prepend {
+        position: relative;
+        margin-top: 10px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id = 'mapContainer'>
+    <div id="map"></div>
+    <button type="button" id = "view1" name="button"> view1</button>
+    </div>
+  <div id ="tablediv" style="margin-top:30px">
+
+  </div>
+
+
+    <script>
+
+      function initMap(coords,tabeldata) {
+        var coordinates = [{
+                            "lat": 32.686241,
+                            "lng": -97.366099
+                          },
+                          {
+                            "lat": 32.682918,
+                            "lng": -97.377085
+                          }
+                          ]
+          if(coords !== undefined){
+            coordinates = coords;
+          }
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: coordinates[0]
+        });
+        var image = 'http://www.myiconfinder.com/uploads/iconsets/32-32-a5485b563efc4511e0cd8bd04ad0fe9e.png';
+
+        for (var i = 0; i < coordinates.length; i++) {
+          var marker = new google.maps.Marker({
+          position: coordinates[i],
+          map: map,
+          icon: image,
+          title: 'Demo'
+        });
+
+        console.log(coordinates[i].lat,coordinates[i].lng);
+        google.maps.event.addListener(marker, 'click', (function() {
+          console.log("clicked");
+          $('#tablediv').html("");
+          var table = '<table><tr><td>hello in table</td></tr></table>';
+          $('#tablediv').append(table);
+        }))
+        }
+
+      }
+    </script>
+
+    <script type="text/javascript">
+    $('#view1').on('click',function(e) {
+      var temp = [{
+        "lat": 32.680607,
+        "lng": -97.359747
+      },
+      {
+        "lat": 32.680687,
+        "lng": -97.377257
+      },
+      {
+        "lat": 32.683063,
+        "lng": -97.348549
+      },
+      {
+        "lat": 32.672948,
+        "lng": -97.392363
+      },
+      {
+        "lat": 32.682340,
+        "lng": -97.386698
+      }];
+
+      initMap(temp)
+      console.log("hello initmpa cla");
+    })
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCur7otcKAAlJLqG_7jAv5P-j9F6EqeGWQ&callback=initMap">
+    </script>
+  </body>
+</html>

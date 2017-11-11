@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+<script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0-rc.5/angular-material.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0-rc.5/angular-material.css"></link>
+<script>
+    angular.module('cardDemo2', ['ngMaterial'])
+        .controller('AppCtrl', function($scope) {
+            $scope.imagePath = 'img/washedout.png';
+        });
+</script>
+    <style>
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+      #mapContainer {
+        height: 200px;
+      }
+      .geodetails {
+          text-align: center;
+      }
+      .chkimg {
+          float:left;
+          /*display: inline;*/
+      }
+      .tclass {
+          display: inline;
+      }
+
+    </style>
+<body>
+    <div ng-app="cardDemo2">
+        <div ng-controller="AppCtrl" ng-cloak>
+            <md-content class="md-padding" layout-xs="column" layout="column">
+                <div flex-xs flex-gt-xs="100" layout="row">
+                    <md-card>
+                        <md-card-avatar>
+<img src="D:\Angularjs\Indicator1.png"  />
+                        </md-card-avatar>
+                        <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">0.3mn Daily Revenue</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                    </md-card>
+                    <md-card>
+                        <md-card-avatar>
+<img src="D:\Angularjs\Indicator2.png"  />
+                        </md-card-avatar>
+                        <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">1400 Vend/Day</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                    </md-card>
+                    <md-card>
+                        <md-card-avatar>
+<img src="D:\Angularjs\Indicator3.png"  />
+                        </md-card-avatar>
+                        <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">Icon action buttons</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                    </md-card>
+                    <md-card>
+                        <md-card-avatar>
+<img src="D:\Angularjs\Indicator4.png"  />
+                        </md-card-avatar>
+                        <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">Pore Ratio</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                    </md-card>
+                    <md-card>
+                        <md-card-avatar>
+                    <img src="D:\Angularjs\Indicator5.png"  />
+                        </md-card-avatar>
+                        <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">25 Partly clouds</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                    </md-card>
+                </div>
+            </md-content>
+            <md-content class="md-padding" layout-xs="column" layout="row">
+                <div flex-xs flex-gt-xs="50" layout="column">
+                    <md-card>
+                        <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">Connectivity Issue - Snapshot</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <p>
+                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                            </p>
+                        </md-card-content>
+
+                    </md-card>
+
+                    <md-card>
+
+                        <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">Overall Status</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <p>
+                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                            </p>
+                        </md-card-content>
+
+                    </md-card>
+                    <div flex-xs flex-gt-xs="50" layout="row">
+                        <md-card>
+                            <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                            <md-card-title>
+                                <md-card-title-text>
+                                    <span class="md-headline">Geo Location Details:</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content>
+                                <p>
+                                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                                </p>
+                            </md-card-content>
+
+                        </md-card>
+                        <md-card>
+                            <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                            <md-card-title>
+                                <md-card-title-text>
+                                    <span class="md-headline">Geo Location Details:</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content>
+                                <p>
+                                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                                </p>
+                            </md-card-content>
+
+                        </md-card>
+                    </div>
+                </div>
+                <div flex-xs flex-gt-xs="50" layout="column">
+                    <md-card>
+                        <md-card-header>
+
+                            <md-card-header-text>
+                                <span class="md-title">Geo Location : Dallas</span>
+                            </md-card-header-text>
+                        </md-card-header>
+                        <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+
+                        <md-card-content>
+                           <div id = 'mapContainer'>
+                           <div id="map"></div>
+                           </div>
+                    <div style="width:80%;margin-top:6%">
+                       <md-input-container class="md-icon-float md-block">
+                       <label>Search</label>
+                       <input ng-model="user.search" type="text">
+                       <md-icon class="icon-search" class="search"></md-icon>
+                       </md-input-container>
+                   </div>
+                   <div class="geobox">
+                       <div >
+                           <img src="https://placehold.it/100x150" alt="" class="chkimg" />
+                       </div>
+                       <div class= "geodetails">
+                           Equipment parameters
+                           <center>
+                           <table class="table tclass" >
+                               <tr>
+                                   <td>Customer Name</td>
+                                   <td>shell cobras</td>
+                               </tr>
+                               <tr>
+                                   <td>Customer Address</td>
+                                   <td>34, ist aveneue</td>
+                               </tr>
+                           </table>
+                       </center>
+                       </div> <!-- geodetails ends-->
+                   </div>
+                 <!-- geobox div ends   -->
+    <script>
+
+      function initMap() {
+        var coordinates = [{
+                            "lat": 32.686241,
+                            "lng": -97.366099
+                          },
+                          {
+                            "lat": 32.682918,
+                            "lng": -97.377085
+                          },
+                          {
+                            "lat": 32.680607,
+                            "lng": -97.359747
+                          },
+                          {
+                            "lat": 32.680687,
+                            "lng": -97.377257
+                          },
+                          {
+                            "lat": 32.683063,
+                            "lng": -97.348549
+                          },
+                          {
+                            "lat": 32.672948,
+                            "lng": -97.392363
+                          },
+                          {
+                            "lat": 32.682340,
+                            "lng": -97.386698
+                          }]
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: coordinates[0]
+        });
+        var image = 'http://www.myiconfinder.com/uploads/iconsets/32-32-a5485b563efc4511e0cd8bd04ad0fe9e.png';
+
+        for (var i = 0; i < coordinates.length; i++) {
+          var marker = new google.maps.Marker({
+          position: coordinates[i],
+          map: map,
+          icon: image,
+          title: 'Demo'
+        });
+        console.log(coordinates[i].lat,coordinates[i].lng);
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCur7otcKAAlJLqG_7jAv5P-j9F6EqeGWQ&callback=initMap">
+    </script>
+                        </md-card-content>
+                    </md-card>
+                    <md-card>
+                        <!--img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out"-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">Equipment Sub-Type</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <p>
+                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                            </p>
+                        </md-card-content>
+
+                    </md-card>
+
+                </div>
+            </md-content>
+        </div>
+    </div>
+
+</body>
+
+</html>

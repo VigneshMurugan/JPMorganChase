@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Pepsi Portfolio</title>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="lib\bootstrap\css\bootstrap.min.css" rel="stylesheet" />
+    <link href="stylesheets\sideMenu.css" rel="stylesheet" />
+    <link href="stylesheets\style.css" rel="stylesheet" />
+      <link href="stylesheets\nav.css" rel="stylesheet" />
+      <!-- code by Ashish Gupta -->
+      <script src="lib\js\jquery.min.js "></script>
+      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+      <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+      <script src="lib\js\geomap_equipment.js"></script>
+      <script language="javascript">
+//          angular.module('MyApp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+//                 .controller('AppCtrl', function($scope) {
+//                    $scope.imagePath = 'img/washedout.png';
+//                  });
+		  var app = angular.module('app', ['ngTouch', 'ui.grid', 'ui.grid.edit','ui.grid.selection']);
+
+			app.controller('MainCtrl', ['$scope','$sce','$http', function ($scope,$sce,$http) {
+
+
+			$scope.gridOptions = {
+					enableRowSelection:true,
+					selectionRowHeaderWidth: 35,
+					enableSorting: true,
+//					rowHeight:30,
+					columnDefs: [
+					  { name:'Equip-id', field: 'EQPMT_ID',width:100 },
+					  { name:'Equip Sl.No', field: 'EQPMT_SRL_NUM_VAL',width:125 },
+					  { name:'Customer Name', field: 'CUSTOMER_NAME',width:200},
+					  { name:'Connectivity', field: 'CONNECTIVITY', enableCellEdit:false,width:150},//change
+					  { name:'Last Heartbeat', field:'LAST_BEAT',width:180},
+					  { name:'Country', field:'COUNTRY',width:80},
+					  { name:'Market Unit', field:'MARKET_UNIT',width:300}
+//					  { name:'Status', field:'status'
+//					   ,cellTemplate:"<img width=\"50px\" ng-src=\"{{grid.getCellValue(row, col)}}\" lazy-src>"}
+					]};
+				
+			$http.get("master_data.json")
+			.then(function(response) {
+				$scope.data = response.data;
+				$scope.masterData=response.data;
+				console.log("Master data read from server");
+				$scope.gridOptions = {
+					enableRowSelection:true,
+					selectionRowHeaderWidth: 35,
+					enableSorting: true,
+//					rowHeight:30,
+					columnDefs: [
+					  { name:'Equip-id', field: 'EQPMT_ID',width:100 },
+					  { name:'Equip Sl.No', field: 'EQPMT_SRL_NUM_VAL',width:125 },
+					  { name:'Customer Name', field: 'CUSTOMER_NAME',width:200},
+					  { name:'Connectivity', field: 'CONNECTIVITY', enableCellEdit:false,width:150},//change
+					  { name:'Last Heartbeat', field:'LAST_BEAT',width:180},
+					  { name:'Country', field:'COUNTRY',width:80},
+					  { name:'Market Unit', field:'MARKET_UNIT',width:300}
+//					  { name:'Status', field:'status'
+//					   ,cellTemplate:"<img width=\"50px\" ng-src=\"{{grid.getCellValue(row, col)}}\" lazy-src>"}
+					]
+			  };
+				$scope.gridOptions.data=$scope.data;
+				
+			});
+				$scope.enableFilter=function(data){
+				var filData=$scope.data;
+
+				//$scope.gridOptions.data.splice(25,20);
+				if(data!=='NONE'){
+				for(var i = filData.length-1; i--;){
+					if (filData[i].COUNTRY=== data) filData.splice(i, 1);
+				}
+				$scope.data=filData;
+				console.log($scope.data.length);
+				//$scope.gridOptions.data=filData;
+//				for(var j=0;j<filData.length;j++)
+//				console.log(filData[j].COUNTRY);
+				//console.log($scope.inc);
+			//	console.log($scope.data);
+			}
+			else
+			{	console.log("Master data : initial length -> "+$scope.masterData.length);
+				$scope.data=$scope.masterData;
+				console.log($scope.data.length);
+				console.log("Master data : Post operation length ->"+$scope.masterData.length);
+/*				$scope.inc=true;
+				console.log("Reset in progress");
+				$scope.data=$scope.masterData;
+				console.log("Master data");
+				console.log($scope.masterData);
+				console.log("Scope data");	
+				console.log($scope.data);
+				for(var j=0;j<$scope.data.length;j++)
+					console.log($scope.data.COUNTRY);*/
+			}
+		}
+ 		}]);
+
+      </script>
+<!--	  For UI Grid : Author :  Arun Karthic R-->
+<!--	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.js"></script>
+<!--    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>-->
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <script src="http://ui-grid.info/release/ui-grid-unstable.js"></script>
+    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid-unstable.css" type="text/css">
+<!--UI Grid ends here-->
+      <!-- code by Ashish Gupta -->
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default" id="mynav">
+      <div class="container-fluid" id="navigationBar">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" id="navPos">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+			 <!--<a class="navbar-brand">
+			  <div>
+			  	<img id="navbar-logo" src="images/header-backgroundimage.png" alt="Pepsi_logo"/>
+			  </div>
+		  </a>
+		  <a class="navbar-brand">
+			  <img id="navbar-logo-text" src="images/pepsi-logo-type-white.svg" alt="Pepsi" />
+		  </a>-->
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right" id="mybtn">
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="button" class="btn btn-info btn-sm" id="searchbtn" >
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              </button>
+            </form>
+            <li><button type="button" class="btn btn-warning btn-sm" id="Alertbtn" >
+              <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+              </button>
+            </li>
+            <li class="dropdown">
+            <li><button type="button" class="btn btn-success btn-sm" id="userbtn" >
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </button>
+            </li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false" > <span class="caret" id="NavDropdown"></span></a>
+            <ul class="dropdown-menu" >
+              <li><a href="#">My Profile</a></li>
+              <li><a href="#">Explore</a></li>
+              <li><a href="#">Help</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">Sign out</a></li>
+            </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+          <!-- </div> -->
+      <!-- /.container-fluid -->
+    </nav>
+
+     <!--side bar menu goes here  -->
+     <div id="wrapper" class="">
+    <div class="overlay" style="display: none;"></div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+        <ul class="nav sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">Menu</a>
+            </li>
+            <li>
+                <a href="/"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="equipment"><i class="glyphicon glyphicon-facetime-video"></i>Equipment</a>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-alert"></i> Error Status</a>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-phone"></i> Inventory</a>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-blackboard"></i> Report</a>
+            </li>
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-globe"></i> Admin</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+        <div class="container">
+            <!-- body of the page goes here -->
+            <!-- code by Ashish Gupta-->
+            <div ng-controller="MainCtrl" ng-cloak="" class="carddemoCardActionButtons">
+				<md-content class="md-padding" layout-xs="column" layout="row">
+
+                    
+                    <div flex-xs="" flex-gt-xs="200" layout="column">
+                        <md-card>
+                            <md-card-title>
+                                <md-card-title-text>
+                                    <span class="md-headline md-headline-custom">
+										Equipment View
+									</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content>
+                              <div id='mapContainer'>
+                              <div id="map"></div>
+                              </div>
+								<!-- <button type="button" id = "view3" name="button" class="btn btn-default btn-xs"> view3</button> -->
+                            <!-- <i class="icon-search" class="float-right" id = "icon-search"></i> -->
+
+                            <div class="geobox">
+                                <div >
+                                    <img src="images/vending_machine.png" alt="" class="chkimg" />
+                                </div>
+                                <div class= "geodetails">
+                                    Equipment parameters
+                                    <center>
+                                    <table class="table tclass" >
+                                        <tr>
+                                            <td>Customer Name</td>
+                                            <td>shell cobras</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Customer Address</td>
+                                            <td>34, ist aveneue</td>
+                                        </tr>
+                                    </table>
+                                </center>
+                                </div> <!-- geodetails ends-->
+                                <script type="text/javascript">
+                            $('#view1').on('click',function(e) {
+                            var temp = [{
+                              "lat": 32.680607,
+                              "lng": -97.359747,
+                              "customerName":"Jim Williams",
+                              "customerAddress":"#22 Park Aveneue"
+                            },
+                            {
+                              "lat": 32.680687,
+                              "lng": -97.377257,
+                              "customerName":"John Joe",
+                              "customerAddress":"34, Crown Aveneue"
+                            },
+                            {
+                              "lat": 32.683063,
+                              "lng": -97.348549,
+                              "customerName":"Williams Smith",
+                              "customerAddress":"2nd Floor, Royal Plaza"
+                            },
+                            {
+                              "lat": 32.672948,
+                              "lng": -97.392363,
+                              "customerName":"Lee",
+                              "customerAddress":"No 72, MG Road Aveneue"
+                            },
+                            {
+                              "lat": 32.682340,
+                              "lng": -97.38668,
+                              "customerName":"Brake John",
+                              "customerAddress":"#32, Last Aveneue"
+                            }];
+
+                            initEquipmentMap(temp)
+                            console.log("hello initmpa cla");
+                             })
+                             $('#view2').on('click',function(e) {
+                             var temp = [
+                             {
+                               "lat": 32.672948,
+                               "lng": -97.392363
+                             },
+                             {
+                               "lat": 32.682340,
+                               "lng": -97.386698
+                             },
+                             {
+                               "lat": 32.662740,
+                               "lng": -97.376098
+                             }];
+
+                             initEquipmentMap(temp)
+                             console.log("hello initmpa cla");
+                              })
+                            </script>
+                            </div>
+                            </md-card-content>
+<!--
+                            <md-card-actions layout="row" layout-align="end center">
+                                <md-button class="md-icon-button" aria-label="Favorite">
+                                    <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Settings">
+                                    <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Share">
+                                    <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+                                </md-button>
+                            </md-card-actions>
+-->
+                        </md-card>
+<!--
+                        <md-card>
+                            <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                            <md-card-actions layout="row" layout-align="end center">
+                                <md-button class="md-icon-button" aria-label="Favorite">
+                                    <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Settings">
+                                    <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Share">
+                                    <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+                                </md-button>
+                            </md-card-actions>
+                        </md-card>
+-->
+                        <md-card>
+<!--
+                            <md-card-header>
+                                <md-card-avatar>
+                                    <img src="img/logo.svg">
+                                </md-card-avatar>
+                                <md-card-header-text>
+                                    <span class="md-title">Angular</span>
+                                    <span class="md-subhead">Material</span>
+                                </md-card-header-text>
+                            </md-card-header>
+-->
+<!--
+                            <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                            <md-card-title>
+                                <md-card-title-text>
+                                    <span class="md-headline md-headline-custom">Global Equipments List</span>
+                                </md-card-title-text>
+                            </md-card-title>
+-->
+                            <md-card-content>
+<!--
+                                <p>
+                                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                                    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as
+                                    well...
+                                </p>
+-->
+								<div ng-controller="MainCtrl">
+								  <div id="grid1" ui-grid="gridOptions" ui-grid-edit class="grid" style='width:1060px; '></div>
+								  <button ng-click="enableFilter('CANADA')">View U.S.A</button>
+								  <button ng-click="enableFilter('U.S.A')">View Canada</button>
+								  <button ng-click="enableFilter('NONE')">Reset filters</button>
+								</div>
+                            </md-card-content>
+                        </md-card>
+                    </div>
+                </md-content>
+            </div>
+            <!-- code by Ashish Gupta -->
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+    <script src="lib\bootstrap\js\bootstrap.min.js "></script>
+    <script src="lib\js\sideMenu.js "></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCur7otcKAAlJLqG_7jAv5P-j9F6EqeGWQ&callback=initEquipmentMap"></script>
+
+  </body>
+</html>

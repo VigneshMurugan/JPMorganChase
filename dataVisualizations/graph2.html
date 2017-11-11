@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+svg {
+  padding-left: 20px;
+}
+.textlabel {
+  margin-top: 50px;
+}
+</style>
+<body>
+<div class="graph1"></div>
+
+
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var connectivityData = {}; // data for connectivity issues snapshot
+var keys;
+d3.csv("demoData.csv" ,function(error, data) {
+    keys = Object.keys(data[0]);
+    console.log(keys);
+    connectivityData.overallStatus={};  // maps to overall status graph in dashboard
+    connectivityData.countryCount = {}; // total country count for country wise break up of machines
+    connectivityData.countryCount["USA"] = 0;
+    connectivityData.countryCount["Canada"] = 0;
+    connectivityData.overallStatus["Transmitting Data"] = 0;
+    connectivityData.overallStatus["Not Connected"] = 0;
+// data  for connectivity issue snapshot
+      for (var i = 1; i < data.length; i++) {
+      var connectivityIssue = data[i][keys[4]];
+      var country = data[i][keys[2]];
+      if ( connectivityData[connectivityIssue] === undefined) {
+      connectivityData[connectivityIssue] = 0;
+      }
+      else {
+      connectivityData[connectivityIssue]++;
+      }
+      connectivityData.overallStatus[data[i][keys[3]]]++;
+      connectivityData.countryCount[data[i][keys[2]]]++; // country wise breakup of machines
+     }
+// console.log(connectivityData);
+drawgraph1();
+});
+function drawgraph1() {
+  var keys = Object.keys(connectivityData);
+  var graph1obj =[];
+  for (var i = 0; i < keys.length; i++) {
+    if ( typeof connectivityData[keys[i]]  !==  'object') {
+      var temp ={};
+      temp.key = keys[i];
+      temp.value =  +connectivityData[keys[i]];
+      graph1obj.push(temp);
+    }
+  }
+  // console.log(graph1obj,"di");
+  var width = 320;
+  var height = 220;
+  var x = d3.scale.ordinal()
+         .rangeRoundBands([0, width], .1);
+  var y = d3.scale.linear()
+         .range([height - 10, 30]);
+
+  x.domain(graph1obj.map(function(d) { return d.key; }));
+  y.domain([0, d3.max(graph1obj, function(d) { return d.value; })]);
+
+  var svg = d3.select("body").append("svg")
+    .attr("width", width )
+    .attr("height", height)
+    .append("g");
+
+    svg.append("g")
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -10)
+        .attr("class","textlabel")
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Number of machines");
+
+   svg.selectAll(".bar")
+       .data(graph1obj)
+       .enter().append("polygon")
+       .attr("points", function(d) {
+        //  console.log(x(d.key),y(d.value));
+        //  console.log(x(d.key)+','+(height - y(d.value)));
+        //  var x = x(d.key)+','+y(d.value);
+         return x(d.key)+','+y(d.value)+' '+(x(d.key)+x.rangeBand()/2)+','+ (height - y(d.value))+' '+ (x(d.key)+x.rangeBand())+','+y(d.value);
+        })
+
+      //  .attr("width", x.rangeBand())
+      //  .attr("y", function(d) { return y(d.value); })
+      //  .attr("height", function(d) { return height - y(d.value); });
+
+       svg.selectAll(".text-labels")
+           .data(graph1obj)
+           .enter().append("text")
+           .text(function(d) {
+             return d.value;
+           })
+           .attr("x", function(d) { return x(d.key); })
+           .attr("y", function(d) { return y(d.value); })
+           .attr("transform","translate(0,-10)");
+}
+
+</script>

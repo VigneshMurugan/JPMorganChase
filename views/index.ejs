@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pepsi Portfolio</title>
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link href="lib\bootstrap\css\bootstrap.min.css" rel="stylesheet" />
+  <link href="stylesheets\sideMenu.css" rel="stylesheet" />
+  <link href="stylesheets\style.css" rel="stylesheet" />
+  <link href="stylesheets\nav.css" rel="stylesheet" />
+  <script src="lib\js\jquery.min.js "></script>
+  <script src= "lib\js\zingchart.min.js"></script>
+  <!-- code by Ashish Gupta -->
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <script src="https://code.angularjs.org/1.4.8/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.4.8/angular-animate.min.js"></script>
+  <script src="https://code.angularjs.org/1.4.8/angular-aria.min.js"></script>
+  <script src="https://code.angularjs.org/1.4.8/angular-messages.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.0/angular-material.min.js"></script>
+  <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+  <script src="lib\js\geomap.js "></script>
+  <script language="javascript">
+  angular.module('MyApp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+  .controller('AppCtrl', function($scope) {
+    $scope.imagePath = 'img/washedout.png';
+  });
+  </script>
+  <script src="lib\js\chart.js "></script>
+
+  <!-- code by Ashish Gupta -->
+</head>
+<body>
+
+  <body>
+
+    <nav class="navbar navbar-default" id="mynav">
+      <div class="container-fluid" id="navigationBar">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" id="navPos">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <a class="navbar-brand">
+              <div>
+                <img id="navbar-logo" src="images/logo.png" alt="Pepsi_logo"/>
+              </div>
+            </a>
+            <a class="navbar-brand">
+              <img id="navbar-logo-text" src="images/pepsi-logo-type-white.svg" alt="Pepsi" />
+            </a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right" id="mybtn">
+              <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="button" class="btn btn-info btn-sm" id="searchbtn" >
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+              </form>
+              <li><button type="button" class="btn btn-warning btn-sm" id="Alertbtn" >
+                <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+              </button>
+            </li>
+            <li class="dropdown">
+              <li><button type="button" class="btn btn-success btn-sm" id="userbtn" >
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </button>
+            </li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false" > <span class="caret" id="NavDropdown"></span></a>
+            <ul class="dropdown-menu" >
+              <li><a href="#">My Profile</a></li>
+              <li><a href="#">Explore</a></li>
+              <li><a href="#">Help</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">Sign out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+      <!-- </div> -->
+      <!-- /.container-fluid -->
+    </nav>
+
+    <!--side bar menu goes here  -->
+    <div id="wrapper" class="">
+      <div class="overlay" style="display: none;"></div>
+      <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+        <ul class="nav sidebar-nav">
+          <li class="sidebar-brand">
+            <a href="#">Menu</a>
+          </li>
+          <li>
+            <a href="/"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a>
+          </li>
+          <li>
+            <a href="equipment"><i class="glyphicon glyphicon-facetime-video"></i>Equipment</a>
+          </li>
+          <li>
+            <a href="#"><i class="glyphicon glyphicon-alert"></i> Error Status</a>
+          </li>
+          <li>
+            <a href="#"><i class="glyphicon glyphicon-phone"></i> Inventory</a>
+          </li>
+          <li>
+            <a href="#"><i class="glyphicon glyphicon-blackboard"></i> Report</a>
+          </li>
+          <li>
+            <a href="#"><i class="glyphicon glyphicon-globe"></i> Admin</a>
+          </li>
+          >>>>>>> 8a8a98b360f291a5eee661d34b2bb922a3589071
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+  <!-- </div> -->
+  <!-- /.container-fluid -->
+</nav>
+
+<!--side bar menu goes here  -->
+<div id="wrapper" class="">
+  <div class="overlay" style="display: none;"></div>
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+    <ul class="nav sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">Menu</a>
+      </li>
+      <li>
+        <a href="#"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a>
+      </li>
+      <li>
+        <a href="\equipmentDetails"><i class="glyphicon glyphicon-facetime-video"></i>Equipment</a>
+      </li>
+      <li>
+        <a href="#"><i class="glyphicon glyphicon-alert"></i> Error Status</a>
+      </li>
+      <li>
+        <a href="#"><i class="glyphicon glyphicon-phone"></i> Inventory</a>
+      </li>
+      <li>
+        <a href="#"><i class="glyphicon glyphicon-blackboard"></i> Report</a>
+      </li>
+      <li>
+        <a href="#"><i class="glyphicon glyphicon-globe"></i> Admin</a>
+      </li>
+    </ul>
+  </nav>
+  <div id="page-content-wrapper">
+    <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+      <span class="hamb-top"></span>
+      <span class="hamb-middle"></span>
+      <span class="hamb-bottom"></span>
+    </button>
+    <div class="container">
+
+      <!-- body of the page goes here -->
+      <!-- code by Ashish Gupta-->
+      <div ng-controller="AppCtrl" ng-cloak="" class="carddemoCardActionButtons" ng-app="MyApp">
+
+        <md-content class="md-padding" layout-xs="column" layout="row">
+          <div flex-xs flex-gt-xs="100" layout="row">
+            <md-card class="md-class-indicator">
+              <md-card-title-media class="md-class-indicator_title">
+                <img src="images/Indicator1.png" class="md-class-indicator_img">
+              </md-card-title-media>
+
+              <md-card-title class="md-class-indicator_title">
+                <md-card-title-text>
+                  <span class="md-headline span_align">0.3mn Daily Revenue</span>
+                </md-card-title-text>
+              </md-card-title>
+            </md-card>
+            <md-card class="md-class-indicator">
+              <md-card-title-media class="md-class-indicator_title">
+                <img src="images/Indicator2.png"class="md-class-indicator_img">
+              </md-card-title-media>
+              <md-card-title class="md-class-indicator_title">
+                <md-card-title-text>
+                  <span class="md-headline span_align">1400 Vend/Day</span>
+                </md-card-title-text>
+              </md-card-title>
+            </md-card>
+            <md-card class="md-class-indicator">
+              <md-card-title-media class="md-class-indicator_title">
+                <img src="images/Indicator3.png"class="md-class-indicator_img">
+              </md-card-title-media>
+              <md-card-title class="md-class-indicator_title">
+                <md-card-title-text>
+                  <span class="md-headline span_align">32% Pore Ratio</span>
+                </md-card-title-text>
+              </md-card-title>
+            </md-card>
+            <md-card class="md-class-indicator">
+              <md-card-title-media class="md-class-indicator_title">
+                <img src="images/Indicator4.png"class="md-class-indicator_img">
+              </md-card-title-media>
+              <md-card-title class="md-class-indicator_title">
+                <md-card-title-text>
+                  <span class="md-headline span_align">23mn Sales</span>
+                </md-card-title-text>
+              </md-card-title>
+            </md-card>
+            <md-card class="md-class-indicator">
+              <md-card-title-media class="md-class-indicator_title">
+                <img src="images/Indicator5.png"class="md-class-indicator_img">
+              </md-card-title-media>
+              <md-card-title class="md-class-indicator_title">
+                <md-card-title-text>
+                  <span class="md-headline span_align">26 Partly Cloud</span>
+                </md-card-title-text>
+              </md-card-title>
+            </md-card>
+          </div>
+        </md-content>
+
+        <md-content class="md-padding" layout-xs="column" layout="row">
+
+          <div flex-xs="" flex-gt-xs="50" layout="column">
+            <md-card>
+              <md-card-content>
+                <div id='SENConnectivityChart'></div>
+              </md-card-content>
+            </md-card>
+          </div>
+
+          <div flex-xs="" flex-gt-xs="50" layout="column">
+            <md-card>
+              <md-card-content>
+                <div id='overallStatusChart'></div>
+              </md-card-content>
+            </md-card>
+          </div>
+          <div flex-xs="" flex-gt-xs="50" layout="column">
+            <md-card>
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Geolocation  Dallas</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <div id='mapContainer'>
+                  <div id="map"></div>
+                </div>
+                <div style="width:75%;margin-top:6%">
+                  <md-input-container class="md-icon-float md-block">
+                    <label>Search</label>
+                    <input ng-model="user.search" type="text">
+                    <!-- <i class="icon-search" style="display:inline;"></i> -->
+                  </md-input-container>
+                </div>
+                <i class="icon-search" class="float-right" id = "icon-search"></i>
+                <button type="button" name="button" id = "viewbutton" class="btn btn-primary btn-xs float-right">view</button>
+                <div class="geobox">
+                  <div >
+                    <img src="https://placehold.it/100x150" alt="" class="chkimg" />
+                  </div>
+                  <div flex-xs="" flex-gt-xs="50" layout="column">
+                    <md-card>
+                      <md-card-title>
+                        <md-card-title-text>
+                          <span class="md-headline">Geolocation  Dallas</span>
+                        </md-card-title-text>
+                      </md-card-title>
+                      <md-card-content>
+                        <div id='mapContainer'>
+                          <div id="map"></div>
+                        </div>
+                        <button type="button" id = "view1" name="button" class="btn btn-default btn-xs"> view1</button>
+                        <button type="button" id = "view2" name="button" class="btn btn-default btn-xs"> view2</button>
+
+                        <div>
+                          <div >
+                            <img src="https://placehold.it/100x150" alt="" class="chkimg" />
+                          </div>
+                          <div>
+                            Equipment parameters
+                            <center>
+                              <table class="table tclass" >
+                                <tr>
+                                  <td>Customer Name</td>
+                                  <td>shell cobras</td>
+                                </tr>
+                                <tr>
+                                  <td>Customer Address</td>
+                                  <td>34, ist aveneue</td>
+                                </tr>
+                              </table>
+                            </center>
+                          </div>
+                          <script type="text/javascript">
+                          $('#view1').on('click',function(e) {
+                            var temp = [{
+                              "lat": 32.680607,
+                              "lng": -97.359747,
+                              "customerName":"Jim Williams",
+                              "customerAddress":"#22 Park Aveneue"
+                            },
+                            {
+                              "lat": 32.680687,
+                              "lng": -97.377257,
+                              "customerName":"John Joe",
+                              "customerAddress":"34, Crown Aveneue"
+                            },
+                            {
+                              "lat": 32.683063,
+                              "lng": -97.348549,
+                              "customerName":"Williams Smith",
+                              "customerAddress":"2nd Floor, Royal Plaza"
+                            },
+                            {
+                              "lat": 32.672948,
+                              "lng": -97.392363,
+                              "customerName":"Lee",
+                              "customerAddress":"No 72, MG Road Aveneue"
+                            },
+                            {
+                              "lat": 32.682340,
+                              "lng": -97.38668,
+                              "customerName":"Brake John",
+                              "customerAddress":"#32, Last Aveneue"
+                            }];
+
+                            initMap(temp)
+                            console.log("hello initmpa cla");
+                          })
+                          $('#view2').on('click',function(e) {
+                            var temp = [
+                              {
+                                "lat": 32.672948,
+                                "lng": -97.392363
+                              },
+                              {
+                                "lat": 32.682340,
+                                "lng": -97.386698
+                              },
+                              {
+                                "lat": 32.662740,
+                                "lng": -97.376098
+                              }];
+
+                              initMap(temp)
+                              console.log("hello initmpa cla");
+                            })
+                            </script>
+                          </div>
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="end center">
+                          <md-button class="md-icon-button" aria-label="Favorite">
+                            <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                          </md-button>
+                          <md-button class="md-icon-button" aria-label="Settings">
+                            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                          </md-button>
+                          <md-button class="md-icon-button" aria-label="Share">
+                            <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+                          </md-button>
+                        </md-card-actions>
+                      </md-card>
+                      <md-card>
+                        <md-card-actions layout="row" layout-align="end center">
+                          <md-button class="md-icon-button" aria-label="Favorite">
+                            <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                          </md-button>
+                          <md-button class="md-icon-button" aria-label="Settings">
+                            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                          </md-button>
+                          <md-button class="md-icon-button" aria-label="Share">
+                            <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+                          </md-button>
+                        </md-card-actions>
+                      </md-card>
+                      <md-card>
+                        <md-card-header>
+                          <md-card-avatar>
+                            <img src="img/logo.svg">
+                          </md-card-avatar>
+                          <md-card-header-text>
+                            <span class="md-title">Angular</span>
+                            <span class="md-subhead">Material</span>
+                          </md-card-header-text>
+                        </md-card-header>
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">Card header</span>
+                          </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                          <p>
+                            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as
+                            well...
+                          </p>
+                        </md-card-content>
+                      </md-card>
+                    </div>
+                  </md-content>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <script>
+    window.onload = function() {
+
+      var excelObject = <%- JSON.stringify(data) %>;
+
+      var SENConnectivity = {};
+      var OverallStatus = {};
+      var keys = [];
+      var SENConnectivityValues = [];
+      var OverallStatusValues = [];
+      var OverallStatusKeys = [];
+      for (var i = 0; i < excelObject.Dashboard_Dump.length; i++)
+      {
+        SENConnectivity[excelObject.Dashboard_Dump[i]["SEN Connectivity"]] = (SENConnectivity[excelObject.Dashboard_Dump[i]["SEN Connectivity"]] + 1) || 1;
+        OverallStatus[excelObject.Dashboard_Dump[i]["Overall Status"]] = (OverallStatus[excelObject.Dashboard_Dump[i]["Overall Status"]] + 1) || 1;
+      }
+
+      Object.keys(SENConnectivity).forEach(function (key) {
+        var arrayValue = [];
+        arrayValue.push(SENConnectivity[key]);
+        SENConnectivityValues.push({"values" : arrayValue , "text" : key });
+      });
+
+      Object.keys(OverallStatus).forEach(function (key) {
+        OverallStatusValues.push(OverallStatus[key]);
+        OverallStatusKeys.push(key);
+      });
+
+      console.log(SENConnectivityValues);
+      console.log(OverallStatusValues);
+
+      var SENConnectivityData = {
+        type: "ring3d",
+        "title": {
+          "text":"SEN Connectivity"
+        },
+        series: SENConnectivityValues
+      };
+
+      var overallStatus = {
+        "type":"bar3d",
+        "title": {
+          "text":"Overall Status"
+        },
+        "tooltip":{
+          "text":"Count : %v"
+        },
+        "plot":{
+          "aspect":"cone"
+        },
+        "series": [
+          {
+            "values": OverallStatusValues,
+            "text" : OverallStatusKeys
+          }
+        ]
+      };
+
+      zingchart.render({
+        id : 'SENConnectivityChart',
+        data : SENConnectivityData,
+        height: "100%",
+        width: "100%"
+      });
+
+      zingchart.render({
+        id : 'overallStatusChart',
+        data : overallStatus,
+        height: "90%",
+        width: "100%"
+      });
+
+      zingchart.bind("overallStatusChart","node_click",function(p){
+        var equipmentId = [];
+        var temp = [];
+        for(var item in excelObject["Dashboard_Dump"]){
+          console.log(item);
+          if(item["SEN Connectivity"] == OverallStatuskeys[p.plotindex])
+              equipmentId.push(item["tblInstallBase_Ident Item Id"])
+        }
+        initMap(temp)
+      });
+    }
+    </script>
+    <script src="lib\bootstrap\js\bootstrap.min.js "></script>
+    <script src="lib\js\sideMenu.js "></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCur7otcKAAlJLqG_7jAv5P-j9F6EqeGWQ&callback=initMap"></script>
+
+  </body>
+  </html>
